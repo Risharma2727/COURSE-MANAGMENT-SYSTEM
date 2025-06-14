@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Courses</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Available Courses</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course Name</th>
+                    <th>Duration</th>
+                    <th>Instructor</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.id}"></td>
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.duration}"></td>
+                    <td th:text="${course.instructor}"></td>
+                    <td>
+                        <a th:href="@{/courses/{id}(id=${course.id})}" class="btn view">👁 View</a>
+                        <a th:href="@{/courses/delete/{id}(id=${course.id})}" class="btn delete">❌ Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a href="/home" class="btn back">🏠 Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
